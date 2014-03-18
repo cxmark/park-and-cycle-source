@@ -1,4 +1,7 @@
 var map;
+
+
+
 $(document).ready(function() {
     map = new GMaps({
         div: '#mapHolder',
@@ -7,6 +10,9 @@ $(document).ready(function() {
         lng: -2.365556,
     });
 
+
+
+
     // Given a route, display it as an option to the user
     function show_route_option(route) {
         display_route(route)
@@ -14,6 +20,7 @@ $(document).ready(function() {
     }
 
     function display_route(route) {
+
         map.drawRoute({
             origin: route.origin,
             destination: route.destination,
@@ -31,34 +38,62 @@ $(document).ready(function() {
         var start = "bs57xt" //$('#start').val();
         var dest = "bs14nd" //$('#destination').val();
 
-        GMaps.geocode({
-            address: start,
-            callback: function(results, status) {
-                if (status == 'OK') {
-                    var start_pnt = results[0].geometry.location;
-                    console.log(start_pnt);
-                    GMaps.geocode({
-                        address: dest,
-                        callback: function(results, status) {
-                            if (status == 'OK') {
-                                var dest_pnt = results[0].geometry.location;
-                                map.getRoutes({
-                                    origin: [start_pnt['k'], start_pnt['A']],
-                                    destination: [dest_pnt['k'], dest_pnt['A']],
-                                    travelMode: 'bicycling',
-                                    waypoints: [{
-                                        'location': "BS4 5LR"
-                                    }],
-                                    callback: function(results, status) {
-                                        show_route_option(results);
-                                    }
-                                });
-                            }
-                        }
-                    })
+        var parking = (function() {
+            var json = null;
+            $.ajax({
+                'async': false,
+                'global': false,
+                'url': "/parking.json",
+                'dataType': "json",
+                'success': function(data) {
+                    json = data;
                 }
-            }
-        });
+            });
+            return json;
+        })();
+        console.log(parking['car_parks']);
+        for (var i = parking['car_parks'].length - 1; i >= 0; i--) {
+            console.log(i);
+            var wp_postcode = parking["car_parks"][i].postcode;
+            GMaps.geocode({
+                address: start,
+                callback: function(results, status) {
+                    if (status == 'OK') {
+                        var start_pnt = results[0].geometry.location;
+                        GMaps.geocode({
+                            address: dest,
+                            callback: function(results, status) {
+                                if (status == 'OK') {
+                                    var dest_pnt = results[0].geometry.location;
+                                    var options = {
+                                        origin: [start_pnt['k'], start_pnt['A']],
+                                        destination: [dest_pnt['k'], dest_pnt['A']],
+                                        travelMode: 'bicycling',
+                                        waypoints: [{
+                                            'location': wp_postcode
+
+                                        }],
+                                    }
+
+
+                                    map.getRoutes({
+                                        origin: [start_pnt['k'], start_pnt['A']],
+                                        destination: [dest_pnt['k'], dest_pnt['A']],
+                                        travelMode: 'bicycling',
+                                        waypoints: [{
+                                            'location': wp_postcode
+                                        }],
+                                        callback: function(results, status) {
+                                            show_route_option(options);
+                                        }
+                                    });
+                                }
+                            }
+                        })
+                    }
+                }
+            });
+        } //END FOR LOOP.
     });
 
     $('.quick-nav a').on('click',function(){
