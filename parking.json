@@ -1,0 +1,22 @@
+{
+    "car_parks": [{
+        "Long Ashton": {
+            "long": "b",
+            "lat": "d",
+            "price_per_day": 0
+        }
+    }, {
+        "Brislington": {
+            "long": "b",
+            "lat": "d",
+            "price_per_day": 0
+        }
+    }, {
+        "Portway": {
+            "long": "b",
+            "lat": "d",
+            "price_per_day": 0
+        }
+    }],
+    "version": 1.0
+}
