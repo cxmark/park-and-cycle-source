@@ -31,10 +31,18 @@ $(document).ready(function() {
         //via_waypoint: Array[0]
         //via_waypoints: Array[0]
         //
-        //
-        console.log(route.carparkName[0].name);
+        //carpark name: route.carparkName[0].name
 
-        display_route(route)
+        $('.result__wrapper').append('<div class="result">'+
+                '<p class="result__title">'+route.carparkName[0].name+'</p>'+
+                '<p class="result__address">'+route.waypoints[0].location+'</p>'+
+                '<p class="result__more"><a href="#result-'+route.waypoints[0].location+'" class="result__more-link js-overlay-open js-overlay-open-dialog">More carpark information</a></p>'+
+                '<p class="result__choose"><span class="choose-result btn--secondary btn">Show this route</span></p>'+
+                '<div id="result-'+route.waypoints[0].location+'" class="overlay overlay--dialog mfp-hide"><p class="overlay__title">Information about this route</p><div class="overlay__content"><p>You could save £201.40 in a year in fuel alone</p><p>You could save 103Kg of CO2 in a year</p><p>You could save 103,203 calories in a year</p><p>(or 52 Mars Bars)</p><p>You could save 98,030 calories in a year</p><p>(or 50 Mars Bars)</p></div></div>'+
+            '</div>'+
+            '');
+        display_route(route);
+
 
         console.log(route);
         console.log(legs);
@@ -137,6 +145,9 @@ $(document).ready(function() {
                                     waypoints: [{
                                         "location": parking["car_parks"][1].postcode
 
+                                    }],
+                                    carparkName: [{
+                                        "name": parking["car_parks"][1].name
                                     }]
                                 };
 
@@ -175,6 +186,9 @@ $(document).ready(function() {
                                     waypoints: [{
                                         'location': parking["car_parks"][2].postcode
 
+                                    }],
+                                    carparkName: [{
+                                        "name": parking["car_parks"][2].name
                                     }]
                                 };
 

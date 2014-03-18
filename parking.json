@@ -3,21 +3,21 @@
         "name": "Long Ashton",
         "long": "b",
         "lat": "d",
-        "postcode": "BS3 2HB",
+        "postcode": "BS32HB",
         "price_per_day": 0
 
     }, {
         "name": "Brislington",
         "long": "b",
         "lat": "d",
-        "postcode": "BS4 5LR",
+        "postcode": "BS45LR",
         "price_per_day": 0
 
     }, {
         "name": "Portway",
         "long": "b",
         "lat": "d",
-        "postcode": "BS11 9QE",
+        "postcode": "BS119QE",
         "price_per_day": 0
     }],
     "version": 1.0
