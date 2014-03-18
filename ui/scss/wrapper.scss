@@ -366,3 +366,8 @@ h1, h2, h3, p, ul {
   @include rem(max-width, 600);
   @include rem(margin-bottom,15);
 }
+#mapHolder {
+    width: 500px;
+    height: 500px;
+
+}
