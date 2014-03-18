@@ -35,7 +35,8 @@ html {
 }
 
 .wr__logo,
-.wr__nav {
+.wr__nav,
+.wr__results {
   @include single-transition(left,0.3s);
   z-index: 100;
   position: fixed;
@@ -67,7 +68,8 @@ html {
   }
 }
 
-.wr__nav {
+.wr__nav,
+.wr__results {
   @include rem(top,150);
   overflow-y: auto !important;
   overflow-x: hidden !important;
@@ -363,11 +365,48 @@ h1,h2,h3,h4,h5,h6,p {
   line-height:1.2;
 }
 h1, h2, h3, p, ul {
-  @include rem(max-width, 600);
+  @include rem(max-width, 660);
   @include rem(margin-bottom,15);
 }
+
+
+.result__wrapper {
+  margin-top: 30px;
+}
+
+.result {
+  @include clearfix;
+  border-top: 1px solid #ccc;
+  @include rem(padding,20 0);
+  @include rem(margin,0);
+}
+
+.result__title {
+  @include rem(margin-bottom,5);
+}
+
+.result__address {
+  @include rem(margin-bottom,5);
+  @include font-size(14);
+}
+
+.result__more-link {
+  color: #eee;
+  @include font-size(14);
+
+}
+
+.btn--secondary {
+  float: right;
+  @include font-size(12);
+  background: darken(#d61d59,20);
+}
+
+.wr__results {
+  display: none;
+}
+
 #mapHolder {
     width: 500px;
     height: 500px;
-
 }
