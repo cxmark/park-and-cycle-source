@@ -1,0 +1,64 @@
+<html>
+<head>
+<script>
+function calculate () {
+var WORKING_DAYS = 233;
+var AVERAGE_URBAN_MPG = 28.225; //http://www.fuel-economy.co.uk/stats.shtml
+var AVERAGE_FUEL_COST_G = 1.296/0.22; //http://www.theaa.com/motoring_advice/fuel/
+var AVERAGE_CO2_G = 14.3 //http://www.carbonindependent.org/sources_car.htm
+var AVERAGE_COMMUTING_SPEED = 13; //http://www.bikeradar.com/gear/article/five-reasons-to-cycle-to-work-29878/
+var AVERAGE_WEIGHT_MAN = 83.6; //http://www.bbc.co.uk/news/uk-11534042
+var AVERAGE_WEIGHT_WOMAN = 70.2; //http://www.bbc.co.uk/news/uk-11534042
+var CALORIES_PER_HOUR_MAN = 669; //http://www.bicycling.com/training-nutrition/training-fitness/cycling-calories-burned-calculator
+var CALORIES_PER_HOUR_WOMAN = 562;
+var CALORIES_MARS_BAR = 280.6;
+
+//Input
+var oneWayMiles = document.calculateForm.onewaymiles.value;
+
+var numMilesSavedPerYear = (oneWayMiles * 2 * WORKING_DAYS);
+var numGallonsSavedPerYear = numMilesSavedPerYear / AVERAGE_URBAN_MPG;
+
+var fuelCostSaving = numGallonsSavedPerYear * AVERAGE_FUEL_COST_G;
+fuelCostSaving = Math.round(fuelCostSaving * 100) / 100;
+
+var co2Saving = numGallonsSavedPerYear * AVERAGE_CO2_G;
+co2Saving = Math.round(co2Saving * 1) / 1;
+
+var timeCycled = numMilesSavedPerYear / AVERAGE_COMMUTING_SPEED;
+
+var caloriesMan = timeCycled * CALORIES_PER_HOUR_MAN;
+caloriesMan = Math.round(caloriesMan * 1) / 1;
+var marsBarsMan = caloriesMan / CALORIES_MARS_BAR;
+marsBarsMan = Math.round(marsBarsMan * 1) / 1;
+
+var caloriesWoman = timeCycled * CALORIES_PER_HOUR_WOMAN;
+caloriesWoman = Math.round(caloriesWoman * 1) / 1;
+var marsBarsWoman = caloriesWoman / CALORIES_MARS_BAR;
+marsBarsWoman = Math.round(marsBarsWoman * 1) / 1;
+
+//Output
+document.getElementById("fuelCostSaving").innerHTML = "You could save £" + fuelCostSaving + " in a year in fuel alone";
+document.getElementById("co2Saving").innerHTML = "You could save " + co2Saving + "Kg of CO2 in a year";
+document.getElementById("caloriesMan").innerHTML = "You could save " + caloriesMan + " calories in a year";
+document.getElementById("marsBarsMan").innerHTML = "(or " + marsBarsMan + " Mars Bars)";
+document.getElementById("caloriesWoman").innerHTML = "You could save " + caloriesWoman + " calories in a year";
+document.getElementById("marsBarsWoman").innerHTML = "(or " + marsBarsWoman + " Mars Bars)";
+
+}
+</script>
+</head>
+<body>
+<form name="calculateForm">
+One way miles <input type="text" name="onewaymiles"/>
+<input type="button" onclick="calculate()" value="calculate">
+<div id="fuelCostSaving"></div>
+<div id="co2Saving"></div>
+<div id="caloriesMan"></div>
+<div id="marsBarsMan"></div>
+<div id="caloriesWoman"></div>
+<div id="marsBarsWoman"></div>
+</form>
+
+</body>
+</html>
