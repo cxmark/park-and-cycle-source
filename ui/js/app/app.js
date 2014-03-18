@@ -22,6 +22,9 @@ $(document).ready(function() {
         map.drawRoute({
             origin: route.origin,
             destination: route.destination,
+            waypoints: [{
+                "location": route.waypoints[0].location
+            }],
             travelMode: 'bicycling',
             strokeColor: '#131540',
             strokeOpacity: 0.3,
@@ -65,7 +68,7 @@ $(document).ready(function() {
                                     destination: [dest_pnt['k'], dest_pnt['A']],
                                     travelMode: 'bicycling',
                                     waypoints: [{
-                                        'location': parking["car_parks"][0].postcode
+                                        "location": parking["car_parks"][0].postcode
 
                                     }]
                                 };
@@ -75,7 +78,7 @@ $(document).ready(function() {
                                     destination: [dest_pnt['k'], dest_pnt['A']],
                                     travelMode: 'bicycling',
                                     waypoints: [{
-                                        'location': parking["car_parks"][0].postcode
+                                        "location": parking["car_parks"][0].postcode
                                     }],
                                     callback: function(results, status) {
                                         show_route_option(options);
@@ -103,7 +106,7 @@ $(document).ready(function() {
                                     destination: [dest_pnt['k'], dest_pnt['A']],
                                     travelMode: 'bicycling',
                                     waypoints: [{
-                                        'location': parking["car_parks"][1].postcode
+                                        "location": parking["car_parks"][1].postcode
 
                                     }]
                                 };
@@ -113,7 +116,7 @@ $(document).ready(function() {
                                     destination: [dest_pnt['k'], dest_pnt['A']],
                                     travelMode: 'bicycling',
                                     waypoints: [{
-                                        'location': parking["car_parks"][1].postcode
+                                        "location": parking["car_parks"][1].postcode
                                     }],
                                     callback: function(results, status) {
                                         show_route_option(options);
