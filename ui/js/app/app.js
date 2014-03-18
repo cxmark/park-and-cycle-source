@@ -61,6 +61,10 @@ $(document).ready(function() {
         });
     });
 
+    $('.quick-nav a').on('click',function(){
+        $('.home-copy').hide();
+        $(document.getElementById($(this).data('id'))).show();
+    });
 
 
 });

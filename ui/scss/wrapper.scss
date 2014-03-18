@@ -425,9 +425,28 @@ body, html {
 }
 
 .home-copy {
+  min-height: 100%;
   @include rem(padding, 30 30 30 30);
-  position: relative;
+  position: absolute;
+  left: 0;
+  width: 100%;
+
   background: #fff;
   display: block;
   z-index: 10;
+}
+
+.quick-nav {
+  border-top: 1px solid #ccc;
+  @include rem(padding-top,20);
+  @include rem(margin-top,20);
+  a {
+    @include font-size(14);
+    color: #fff;
+  }
+}
+
+#benefits-panel,
+#future-panel {
+  display: none;
 }
