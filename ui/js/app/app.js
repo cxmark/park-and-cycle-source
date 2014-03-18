@@ -32,8 +32,9 @@ $(document).ready(function() {
     }
 
 
-    // On click grab the values & geoCode 
+    // On click grab the values & geoCode
     $('#submit-options').click(function() {
+        $('.home-copy').fadeOut();
         var start = "bs57xt" //$('#start').val();
         var dest = "bs14nd" //$('#destination').val();
 

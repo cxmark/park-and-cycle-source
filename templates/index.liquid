@@ -2,7 +2,10 @@
   {% assign page_title = 'Home' %}
   {% include "wrapper/header" %}
   <div class="wr__page-content">
-    {% include "home-copy" %}
+    <div class="home-copy">
+      {% include "home-copy" %}
+    </div>
+    {% include "home-map" %}
   </div>
   {% include "wrapper/footer" %}
 {% endblock %}
