@@ -40,7 +40,7 @@ $(document).ready(function() {
         //via_waypoints: Array[0]
         //
         //carpark name: route.carparkName[0].name
-
+        display_route(route);
         var data = JSON.stringify(route);
 
 
