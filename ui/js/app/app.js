@@ -51,7 +51,7 @@ $(document).ready(function() {
             '<div id="result-' + route.waypoints[0].location + '" class="overlay overlay--dialog mfp-hide"><div class="overlay__content"><p>You could save £201.40 in a year in fuel alone</p><p>You could save 103Kg of CO2 in a year</p><p>You could save 103,203 calories in a year</p><p>(or 52 Mars Bars)</p><p>You could save 98,030 calories in a year</p><p>(or 50 Mars Bars)</p></div></div>' +
             '<p class="result__address"><img src="/ui/images/car.png"> ' + legs[0].distance.text + '</p>' +
             '<p class="result__address"><img src="/ui/images/bike.png"> ' + legs[1].distance.text + '</p>' +
-            '<p class="result__choose"><a href="#" data-route="' + data + '" class="magic-happen choose-result btn--secondary btn">Show this route</a></p>' +
+            '<p class="result__choose"><a href="#" data-route=\'' + data + '\' class="magic-happen choose-result btn--secondary btn">Show this route</a></p>' +
             '');
     }
 
@@ -76,8 +76,8 @@ $(document).ready(function() {
         $('.wr__nav').hide();
         $('.wr__results').show();
         $('.home-copy').fadeOut();
-        var start = "bs57xt"; //$('#start').val();
-        var dest = "bs14nd"; //$('#destination').val();
+        var start = $('#start').val();
+        var dest = $('#destination').val();
 
         var parking = (function() {
             var json = null;
