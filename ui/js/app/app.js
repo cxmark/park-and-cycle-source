@@ -13,8 +13,11 @@ $(document).ready(function() {
 
     // Given a route, display it as an option to the user
     function show_route_option(route) {
-        display_route(route)
+        display_route(route);
+        console.log(route.carparkName[0].name);
+
         console.log(route);
+
 
     }
 
@@ -35,6 +38,8 @@ $(document).ready(function() {
 
     // On click grab the values & geoCode
     $('#submit-options').click(function() {
+        $('.wr__nav').hide();
+        $('.wr__results').show();
         $('.home-copy').fadeOut();
         var start = "bs57xt"; //$('#start').val();
         var dest = "bs14nd"; //$('#destination').val();
@@ -69,7 +74,9 @@ $(document).ready(function() {
                                     travelMode: 'bicycling',
                                     waypoints: [{
                                         "location": parking["car_parks"][0].postcode
-
+                                    }],
+                                    carparkName: [{
+                                        "name": parking["car_parks"][0].name
                                     }]
                                 };
 

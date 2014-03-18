@@ -368,14 +368,9 @@ h1, h2, h3, p, ul {
   @include rem(margin-bottom,15);
 }
 
-
-.result__wrapper {
-  margin-top: 30px;
-}
-
 .result {
   @include clearfix;
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   @include rem(padding,20 0);
   @include rem(margin,0);
 }
@@ -399,6 +394,10 @@ h1, h2, h3, p, ul {
   float: right;
   @include font-size(12);
   background: darken(#d61d59,20);
+}
+
+.btn--secondary:hover {
+  background: darken(#d61d59,30);
 }
 
 .wr__results {
