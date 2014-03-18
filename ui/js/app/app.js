@@ -12,9 +12,28 @@ $(document).ready(function() {
 
 
     // Given a route, display it as an option to the user
-    function show_route_option(route) {
+    function show_route_option(route, legs) {
+        // Legs is an array of the two legs, given a single waypoint.
+        // distance: Object
+        //				text: "8.1 km"
+        // 				value: 8061
+        //				__proto__: Object
+        //duration: Object
+        //				text: "28 mins"
+        //				value: 1683
+        //				__proto__: Object
+        //end_address: "Bristol, City of Bristol BS4 5LR, UK"
+        //end_location: O
+        //start_address: "27 Atlas Close, Bristol, City of Bristol BS5 7XT, UK"
+        //start_location: O
+        //steps: Array[20]
+        //via_waypoint: Array[0]
+        //via_waypoints: Array[0]
+        // 
+
         display_route(route)
         console.log(route);
+        console.log(legs);
 
     }
 
@@ -30,6 +49,7 @@ $(document).ready(function() {
             strokeOpacity: 0.3,
             strokeWeight: 3
         })
+
     }
 
 
@@ -81,7 +101,7 @@ $(document).ready(function() {
                                         "location": parking["car_parks"][0].postcode
                                     }],
                                     callback: function(results, status) {
-                                        show_route_option(options);
+                                        show_route_option(options, results[0]["legs"]);
                                     }
                                 });
                             }
@@ -119,7 +139,7 @@ $(document).ready(function() {
                                         "location": parking["car_parks"][1].postcode
                                     }],
                                     callback: function(results, status) {
-                                        show_route_option(options);
+                                        show_route_option(options, results[0]["legs"]);
                                     }
                                 });
                             }
@@ -157,7 +177,7 @@ $(document).ready(function() {
                                         'location': parking["car_parks"][2].postcode
                                     }],
                                     callback: function(results, status) {
-                                        show_route_option(options);
+                                        show_route_option(options, results[0]["legs"]);
                                     }
                                 });
                             }
