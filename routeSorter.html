@@ -1,0 +1,79 @@
+<html>
+<head>
+<script>
+
+routeA=new Object();
+routeA.drivingDistance = 8;
+routeA.cycleDistance = 3;
+
+routeB=new Object();
+routeB.drivingDistance = 7;
+routeB.cycleDistance = 4;
+
+routeC=new Object();
+routeC.drivingDistance = 6;
+routeC.cycleDistance = 6;
+
+routeD = new Object();
+routeD.drivingDistance = 6;
+routeD.cycleDistance = 4;
+
+var IDD;
+var originalDrivingDistance;
+var cycleD;
+var CYCLING_MODIFIER = 2;
+
+
+function sortRoutes () {
+
+  originalDrivingDistance = document.calculateForm.originalDrivingDistance.value;
+
+  cycleD = document.calculateForm.cycleD.value;
+  IDD = originalDrivingDistance - cycleD;
+
+  var objs = [routeA, routeB, routeC, routeD];
+
+  for (var i = 0; i < objs.length; i++)
+  {
+      document.write(objs[i].drivingDistance + " - " + objs[i].cycleDistance + "<br>");
+  }
+
+  objs.sort(compare);
+
+  for (var i = 0; i < objs.length; i++)
+  {
+    document.write(objs[i].drivingDistance + " - " + objs[i].cycleDistance + "<br>");
+  }
+
+}
+
+function compare(a,b) {
+
+  var aDrivingDelta = Math.abs(a.drivingDistance - IDD);
+  var aCyclingDelta = Math.abs(a.cycleDistance - cycleD) * CYCLING_MODIFIER;
+  var aDelta = aDrivingDelta + aCyclingDelta;
+
+  var bDrivingDelta = Math.abs(b.drivingDistance - IDD);
+  var bCyclingDelta = Math.abs(b.cycleDistance - cycleD) * CYCLING_MODIFIER;
+  var bDelta = bDrivingDelta + bCyclingDelta;
+
+
+  if (aDelta < bDelta)
+     return -1;
+  if (aDelta > bDelta)
+    return 1;
+  return 0;
+}
+
+</script>
+</head>
+<body>
+<form name="calculateForm">
+Original Driving Distance <input type="text" name="originalDrivingDistance"/>
+cycleD <input type="text" name="cycleD"/>
+
+<input type="button" onclick="sortRoutes()" value="sortRoutes">
+</form>
+
+</body>
+</html>
