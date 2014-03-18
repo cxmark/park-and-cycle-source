@@ -8,12 +8,14 @@ $(document).ready(function() {
         lng: -2.5833,
     });
 
-    $('a.magic-happen').on("click", function(e) {
+    $('.result__wrapper').on("click", ".magic-happen", function(e) {
 
 
         console.log("hola");
+        console.log($(this).data("route"));
+        display_route(JSON.parse($(this).data("route")));
         //display_route(this)
-    })
+    });
 
 
 
@@ -39,7 +41,7 @@ $(document).ready(function() {
         //
         //carpark name: route.carparkName[0].name
 
-        var data = JSON.stringify(route)
+        var data = JSON.stringify(route);
 
         $('.result__wrapper').append('<div class="result">' +
             '<p class="result__title">' + route.carparkName[0].name + '</p>' +
