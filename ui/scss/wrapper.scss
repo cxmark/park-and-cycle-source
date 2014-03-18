@@ -6,6 +6,10 @@ $font-regular: "Thesans-Semi-Light", "HelveticaNeue-Light", "Helvetica Neue Ligh
 $font-bold: "Thesans-Bold", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, sans-serif;
 $font-select: "Thesans-Semi-Light-Select", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Arial, sans-serif;
 
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
 
 html {
   font-family: $font-regular;
@@ -70,30 +74,10 @@ html {
   @include rem(top,150);
   overflow-y: auto !important;
   overflow-x: hidden !important;
-  box-sizing: content-box;
   bottom: 0;
   background: #2E3137;
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-  li {
-    margin: 0;
-  }
-  li:before {
-    display: none;
-  }
-  a {
-    border-bottom: 1px solid #383838;
-    @include rem(padding,12 20);
-    @include font-size(18);
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    &:hover {
-      color: #90B4EE;
-    }
-  }
+  @include rem(padding,20);
+  color: #f2f2f2;
 }
 
 .wr__notes {
@@ -350,6 +334,26 @@ code[class*="language"],
   }
 }
 
+$pac-green: #42a737;
+
 .page-footer {
   background: #2E3137;
+}
+
+html, .wr__logo  {
+  border-top:3px solid $pac-green;
+}
+
+.btn {
+  background: darken($pac-green,10);
+  -webkit-box-shadow: darken($pac-green,30) 0 2px 0 0;
+  -moz-box-shadow: darken($pac-green,30) 0 2px 0 0;
+  box-shadow: darken($pac-green,30) 0 2px 0 0;
+}
+.btn:hover {
+  background: darken($pac-green,20);
+}
+
+input:focus {
+
 }
