@@ -369,6 +369,7 @@ h1, h2, h3, p, ul {
   @include rem(margin-bottom,15);
 }
 
+
 .result__wrapper {
   margin-top: 30px;
 }
@@ -403,4 +404,9 @@ h1, h2, h3, p, ul {
 
 .wr__results {
   display: none;
+}
+
+#mapHolder {
+    width: 500px;
+    height: 500px;
 }
