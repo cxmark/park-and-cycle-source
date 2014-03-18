@@ -1,0 +1,19 @@
+{
+  "customRubyPath": null,
+  "debug": false,
+  "followLeader": false,
+  "lintScripts": false,
+  "preprocessorLocations": "ui",
+  "preprocessorScriptOutput": "ui/js",
+  "preprocessorStyleOutput": "ui/css",
+  "projectDescription": "",
+  "projectName": "Park and Cycle",
+  "publishedId": "11305",
+  "serverHostname": "192.168.10.111",
+  "serverPort": null,
+  "templateDefaultLayout": "layout",
+  "templateDefaultPage": "index",
+  "templateDirectory": "templates",
+  "type": "mixture",
+  "useCompass": true
+}

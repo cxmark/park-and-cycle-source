@@ -1,0 +1,14 @@
+# un-needed dot files
+.DS_Store
+
+# compass
+.sass-cache
+
+# node
+node_modules
+ui/css/
+converted-html
+
+#sublime
+BCC.sublime-project
+BCC.sublime-workspace
