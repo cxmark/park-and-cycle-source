@@ -1,22 +1,24 @@
 {
     "car_parks": [{
-        "Long Ashton": {
-            "long": "b",
-            "lat": "d",
-            "price_per_day": 0
-        }
+        "name": "Long Ashton",
+        "long": "b",
+        "lat": "d",
+        "postcode": "BS3 2HB",
+        "price_per_day": 0
+
     }, {
-        "Brislington": {
-            "long": "b",
-            "lat": "d",
-            "price_per_day": 0
-        }
+        "name": "Brislington",
+        "long": "b",
+        "lat": "d",
+        "postcode": "BS4 5LR",
+        "price_per_day": 0
+
     }, {
-        "Portway": {
-            "long": "b",
-            "lat": "d",
-            "price_per_day": 0
-        }
+        "name": "Portway",
+        "long": "b",
+        "lat": "d",
+        "postcode": "BS11 9QE",
+        "price_per_day": 0
     }],
     "version": 1.0
 }
