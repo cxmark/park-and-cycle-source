@@ -23,12 +23,10 @@ html {
 
 .wr__page-content {
   position: relative;
-  margin-left: 0;
-  @include rem(padding,100 30 30 30);
+  @include rem(padding, 30 30 30 30);
   @extend %cf;
-  @media screen and (min-width: 1000px) {
     @include rem(margin-left,245);
-  }
+
 }
 
 .wr__header {
@@ -40,12 +38,10 @@ html {
 .wr__nav {
   @include single-transition(left,0.3s);
   z-index: 100;
-  @include rem(left,-245);
   position: fixed;
   @include rem(width,245);
-  @media screen and (min-width: 1000px) {
     left: 0;
-  }
+
   .visible-header & {
     left: 0;
   }
@@ -60,6 +56,7 @@ html {
   background: #EAEAEA;
   text-align: center;
   img {
+    @include rem(max-width,190);
     position: relative;
     top: 50%;
     @include translateY(-50%);
@@ -135,9 +132,7 @@ html {
   @include single-transition(left,0.3s);
   position: relative;
   left: 0;
-  @media screen and (min-width: 1000px) {
-    display: none;
-  }
+  display: none;
   .visible-header & {
     @include rem(left,245);
   }
@@ -353,7 +348,21 @@ html, .wr__logo  {
 .btn:hover {
   background: darken($pac-green,20);
 }
+.btn:active {
+  -webkit-box-shadow: darken($pac-green,30) 0 1px 0 0;
+  -moz-box-shadow: darken($pac-green,30) 0 1px 0 0;
+  box-shadow: darken($pac-green,30) 0 1px 0 0;
+}
 
-input:focus {
+.form__field--multiselect:focus, .form__field--selectsize:focus, .form__field--string:focus {
+  outline: 3px solid #d3d3d3;
+}
 
+h1,h2,h3,h4,h5,h6,p {
+  margin-top: 0;
+  line-height:1.2;
+}
+h1, h2, h3, p, ul {
+  @include rem(max-width, 600);
+  @include rem(margin-bottom,15);
 }
