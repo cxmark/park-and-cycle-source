@@ -8,6 +8,12 @@ $(document).ready(function() {
         lng: -2.5833,
     });
 
+    $('a.magic-happen').on("click", function(e) {
+
+
+        console.log("hola");
+        //display_route(this)
+    })
 
 
 
@@ -33,24 +39,18 @@ $(document).ready(function() {
         //
         //carpark name: route.carparkName[0].name
 
-        $('.result__wrapper').append('<div class="result">'+
-                '<p class="result__title">'+route.carparkName[0].name+'</p>'+
-                '<p class="result__address">'+route.waypoints[0].location+'</p>'+
-                '<p class="result__more"><a href="#result-'+route.waypoints[0].location+'" class="result__more-link js-overlay-open js-overlay-open-dialog">More carpark information</a></p>'+
-                '<div id="result-'+route.waypoints[0].location+'" class="overlay overlay--dialog mfp-hide"><div class="overlay__content"><p>You could save £201.40 in a year in fuel alone</p><p>You could save 103Kg of CO2 in a year</p><p>You could save 103,203 calories in a year</p><p>(or 52 Mars Bars)</p><p>You could save 98,030 calories in a year</p><p>(or 50 Mars Bars)</p></div></div>'+
-                '<p class="result__address"><img src="/ui/images/car.png"> '+legs[0].distance.text+'</p>'+
-                '<p class="result__address"><img src="/ui/images/bike.png"> '+legs[1].distance.text+'</p>'+
-                '<p class="result__choose"><a href="#" class="choose-result btn--secondary btn">Show this route</a></p>'+
 
-            '</div>'+
+        var data = JSON.stringify(route)
+
+        $('.result__wrapper').append('<div class="result">' +
+            '<p class="result__title">'+route.carparkName[0].name+'</p>'+
+            '<p class="result__address">'+route.waypoints[0].location+'</p>'+
+            '<p class="result__more"><a href="#result-'+route.waypoints[0].location+'" class="result__more-link js-overlay-open js-overlay-open-dialog">More carpark information</a></p>'+
+            '<div id="result-'+route.waypoints[0].location+'" class="overlay overlay--dialog mfp-hide"><div class="overlay__content"><p>You could save £201.40 in a year in fuel alone</p><p>You could save 103Kg of CO2 in a year</p><p>You could save 103,203 calories in a year</p><p>(or 52 Mars Bars)</p><p>You could save 98,030 calories in a year</p><p>(or 50 Mars Bars)</p></div></div>'+
+            '<p class="result__address"><img src="/ui/images/car.png"> '+legs[0].distance.text+'</p>'+
+            '<p class="result__address"><img src="/ui/images/bike.png"> '+legs[1].distance.text+'</p>'+
+            '<p class="result__choose"><a href="#" data-route="' + data + '" class="magic-happen choose-result btn--secondary btn">Show this route</a></p>' +
             '');
-        display_route(route);
-
-
-        console.log(route);
-        console.log(legs);
-
-
     }
 
     function display_route(route) {
