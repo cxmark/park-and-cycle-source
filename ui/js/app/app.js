@@ -37,8 +37,11 @@ $(document).ready(function() {
                 '<p class="result__title">'+route.carparkName[0].name+'</p>'+
                 '<p class="result__address">'+route.waypoints[0].location+'</p>'+
                 '<p class="result__more"><a href="#result-'+route.waypoints[0].location+'" class="result__more-link js-overlay-open js-overlay-open-dialog">More carpark information</a></p>'+
-                '<p class="result__choose"><span class="choose-result btn--secondary btn">Show this route</span></p>'+
-                '<div id="result-'+route.waypoints[0].location+'" class="overlay overlay--dialog mfp-hide"><p class="overlay__title">Information about this route</p><div class="overlay__content"><p>You could save £201.40 in a year in fuel alone</p><p>You could save 103Kg of CO2 in a year</p><p>You could save 103,203 calories in a year</p><p>(or 52 Mars Bars)</p><p>You could save 98,030 calories in a year</p><p>(or 50 Mars Bars)</p></div></div>'+
+                '<div id="result-'+route.waypoints[0].location+'" class="overlay overlay--dialog mfp-hide"><div class="overlay__content"><p>You could save £201.40 in a year in fuel alone</p><p>You could save 103Kg of CO2 in a year</p><p>You could save 103,203 calories in a year</p><p>(or 52 Mars Bars)</p><p>You could save 98,030 calories in a year</p><p>(or 50 Mars Bars)</p></div></div>'+
+                '<p class="result__address"><img src="/ui/images/car.png"> '+legs[0].distance.text+'</p>'+
+                '<p class="result__address"><img src="/ui/images/bike.png"> '+legs[1].distance.text+'</p>'+
+                '<p class="result__choose"><a href="#" class="choose-result btn--secondary btn">Show this route</a></p>'+
+
             '</div>'+
             '');
         display_route(route);
@@ -159,7 +162,7 @@ $(document).ready(function() {
                                         "location": parking["car_parks"][1].postcode
                                     }],
                                     callback: function(results, status) {
-                                        show_route_option(options, results[0]["legs"]);
+                                        show_route_option(options, results[1]["legs"]);
                                     }
                                 });
                             }
@@ -200,7 +203,7 @@ $(document).ready(function() {
                                         'location': parking["car_parks"][2].postcode
                                     }],
                                     callback: function(results, status) {
-                                        show_route_option(options, results[0]["legs"]);
+                                        show_route_option(options, results[2]["legs"]);
                                     }
                                 });
                             }
@@ -217,5 +220,10 @@ $(document).ready(function() {
         $(document.getElementById($(this).data('id'))).show();
     });
 
+    $('.wr__results').on('click','.js-overlay-open',function(e){
+
+        e.preventDefault();
+        $(($(this).attr('href'))).removeClass('mfp-hide');
+    });
 
 });

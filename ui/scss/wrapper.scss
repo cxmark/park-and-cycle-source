@@ -382,6 +382,14 @@ h1, h2, h3, p, ul {
 .result__address {
   @include rem(margin-bottom,5);
   @include font-size(14);
+  img {
+    width: 40px;
+    height: auto;
+  }
+}
+.overlay {
+  margin-bottom: 20px;
+  color: #333 !important;
 }
 
 .result__more-link {
@@ -448,4 +456,9 @@ body, html {
 #benefits-panel,
 #future-panel {
   display: none;
+}
+
+
+.result__choose {
+  @include rem(margin-top,20);
 }
