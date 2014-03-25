@@ -9,14 +9,19 @@ $(document).ready(function() {
     });
 
     $('.result__wrapper').on("click", ".magic-happen", function(e) {
-
-
-        console.log("hola");
-        console.log($(this).data("route"));
-        display_route(JSON.parse($(this).data("route")));
-        //display_route(this)
+        display_route($(this).data());
     });
 
+
+    function makeid() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
+    }
 
 
     // Given a route, display it as an option to the user
@@ -40,9 +45,7 @@ $(document).ready(function() {
         //via_waypoints: Array[0]
         //
         //carpark name: route.carparkName[0].name
-        display_route(route);
-        var data = JSON.stringify(route);
-
+        var route_id = makeid();
 
         $('.result__wrapper').append('<div class="result">' +
             '<p class="result__title">' + route.carparkName[0].name + '</p>' +
@@ -51,11 +54,16 @@ $(document).ready(function() {
             '<div id="result-' + route.waypoints[0].location + '" class="overlay overlay--dialog mfp-hide"><div class="overlay__content"><p>You could save £201.40 in a year in fuel alone</p><p>You could save 103Kg of CO2 in a year</p><p>You could save 103,203 calories in a year</p><p>(or 52 Mars Bars)</p><p>You could save 98,030 calories in a year</p><p>(or 50 Mars Bars)</p></div></div>' +
             '<p class="result__address"><img src="/ui/images/car.png"> ' + legs[0].distance.text + '</p>' +
             '<p class="result__address"><img src="/ui/images/bike.png"> ' + legs[1].distance.text + '</p>' +
-            '<p class="result__choose"><a href="#" data-route=\'' + data + '\' class="magic-happen choose-result btn--secondary btn">Show this route</a></p>' +
+            '<p class="result__choose"><a href="#" id="route-' + route_id + '" class="magic-happen choose-result btn--secondary btn">Show this route</a></p>' +
             '');
+        $('#route-' + route_id).data(route);
+
     }
 
     function display_route(route) {
+        // Clean all existing routes.
+        map.removePolylines();
+        // Draw our new route.
         map.drawRoute({
             origin: route.origin,
             destination: route.destination,
@@ -64,7 +72,7 @@ $(document).ready(function() {
             }],
             travelMode: 'bicycling',
             strokeColor: '#131540',
-            strokeOpacity: 0.3,
+            strokeOpacity: 0.4,
             strokeWeight: 3
         })
 
