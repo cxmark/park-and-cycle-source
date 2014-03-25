@@ -92,7 +92,7 @@ $(document).ready(function() {
             $.ajax({
                 'async': false,
                 'global': false,
-                'url': "/parking.json",
+                'url': "parking.json",
                 'dataType': "json",
                 'success': function(data) {
                     json = data;
